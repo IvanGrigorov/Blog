@@ -4,7 +4,7 @@ import { env } from 'process';
 import { environment } from '../../environments/environment';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../../app/models/User';
-import { SharedDataService } from '../datashare/shared-data.service';
+import { UserinfostoreService } from '../userinfostoreservice/userinfostore.service';
 
 
 @Injectable({
@@ -16,7 +16,8 @@ export class AuthService {
   private userInfoUrl : string = environment.api + "identity/info"
 
 
-  constructor(private httpClient: HttpClient, private sharedDataService: SharedDataService) { }
+  constructor(private httpClient: HttpClient, 
+    private userStoreService: UserinfostoreService) { }
 
   login(data)  {
     return this.httpClient.post(this.loginUrl, data, { responseType: "text" });
@@ -39,10 +40,9 @@ export class AuthService {
   }
 
   saveUserData() {
-    this.sharedDataService.setData(environment.sharedDataUserKey, new BehaviorSubject([]))
     this.getUserData().subscribe(userdata => {
       if (userdata.userName) {
-        this.sharedDataService.setObservableData(environment.sharedDataUserKey, userdata);
+        this.userStoreService.addNewUser(userdata);
       } 
     })
   }

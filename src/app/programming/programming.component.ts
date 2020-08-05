@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService} from '../../services/project/project.service';
 import { Project } from '../models/Project';
 import { AuthService } from 'src/services/auth/auth.service';
-import { SharedDataService } from 'src/services/datashare/shared-data.service';
 import { BaseComponent } from '../base/base.component';
 import { ToastrService } from 'ngx-toastr';
+import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
 
 
 
@@ -19,9 +19,9 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
 
   constructor(private projectService: ProjectService, 
     protected authService: AuthService, 
-    protected sharedDataService: SharedDataService,
+    protected userInfoStore: UserinfostoreService,
     private toastr: ToastrService) { 
-    super(authService, sharedDataService);
+    super(authService, userInfoStore);
    }
 
   ngOnInit(): void {

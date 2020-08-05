@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedDataService } from 'src/services/datashare/shared-data.service';
-import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/services/auth/auth.service';
+import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
 
 @Component({
   selector: 'app-basecomponent',
@@ -10,13 +9,12 @@ import { AuthService } from 'src/services/auth/auth.service';
 })
 export class BaseComponent implements OnInit {
 
-  constructor(protected authService: AuthService, protected sharedDataService: SharedDataService) { }
+  constructor(protected authService: AuthService, protected userInfoStore: UserinfostoreService) { }
 
   userInfo : any = null;
   
   ngOnInit(): void {
-    this.sharedDataService
-      .getObservableData(environment.sharedDataUserKey)
+    this.userInfoStore.userInfo$
       .subscribe(userInfo => {
         this.userInfo = userInfo;
       });

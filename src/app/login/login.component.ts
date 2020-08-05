@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
-import { SharedDataService } from '../../services/datashare/shared-data.service';
-import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -14,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private sharedDataService: SharedDataService) { 
+  constructor(private fb: FormBuilder, private authService: AuthService) { 
     this.loginForm = fb.group({
       "UserName" : ['', [Validators.required]],
       "Password" : ['', [Validators.required]],
