@@ -1,1 +1,31 @@
-<p>programming works!</p>
+<div class="container-fluid">
+    <app-pnavigation></app-pnavigation>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron">
+          <h1 class="display-4">Hi, folks!</h1>
+          <p class="lead">Welcome to my programming portfolio!</p>
+          <hr class="my-4">
+          <p>Here I will post some interesting project, on which I am or have been working. 
+              They are all free, but I will appreciate every support you give - star in Github or some sharing.
+          </p>
+        </div>
+        <div *ngIf="!this.getProjectsCount()" class="alert alert-primary" role="alert">
+          There are currently no projects !
+        </div>
+        <div *ngIf="this.getProjectsCount()" class="row">
+          <div class="col-sm-3" *ngFor="let project of getProjects()">
+            <div class="card">
+              <!-- <img *ngIf="project.Gallery.length" class="card-img-top" src={{project.Gallery[0].FileName}} alt="Card image cap"> -->
+              <div class="card-body">
+                <h5 class="card-title">{{project.title}}</h5>
+                <a href="/programming/project/{{project.id}}" class="btn btn-primary">Get Details</a>
+                <button *ngIf="this.isUserAdmin()" (click)="this.deleteProject(project.id)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

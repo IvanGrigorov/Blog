@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <app-pnavigation></app-pnavigation>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+            <div *ngIf="this.getProjectDetails().gallery.length;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div *ngFor="let image of this.getProjectDetails().gallery; index as i" [attr.class]="(i == 0) ? 'carousel-item active' : 'carousel-item'">
+                  <img class="d-block w-100" src="{{this.getImage(image.fileName)}}" alt="Slide">
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{this.getProjectDetails().title}}</h5>
+              <p class="card-text">{{this.getProjectDetails().description}}</p>
+              <div>Date: {{this.getProjectDetails().createdOn}}</div>
+              <a href="{{this.getProjectDetails().website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-4">
+        <p>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#technologies" aria-expanded="false" aria-controls="technologies">Toggle technologies</button>
+        </p>
+        <div class="row">
+          <div class="col">
+            <div class="collapse multi-collapse" id="technologies">
+                <div class="list-group" *ngFor="let technology of this.getProjectDetails().technologies">
+                    <div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{technology.title}}</h5>
+                      </div>
+                      <p class="mb-1">{{technology.description}}</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
