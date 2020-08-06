@@ -7,7 +7,8 @@ export const environment = {
   api: "https://localhost:44313/",
   tokenLocalStorageHeader: 'token',
   sharedDataUserKey: 'user',
-  sharedDataUserInfoKey: 'userinfo' 
+  sharedDataUserInfoKey: 'userinfo',
+  numberOfImagesPerProject: 5 
 };
 
 /*

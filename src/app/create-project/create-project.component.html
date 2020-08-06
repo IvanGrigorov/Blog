@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <app-pnavigation></app-pnavigation>
+    <div *ngIf="!this.technologiesCreatedCount" class="alert alert-primary" role="alert">
+        There are currently no technologies !
+        You need to create technologies to create projects !
+      </div>
+    <div class="row" *ngIf="this.technologiesCreatedCount">
+        <div class="col-lg-4 offset-lg-4">
+            <form [formGroup]="project" (ngSubmit)="create()">
+                <div class="form-group">
+                    <label for="exampleInputUserName">Title</label>
+                    <input type="text" formControlName="title" class="form-control" id="exampleInputUserName" aria-describedby="userNameHelp">
+                    <div *ngIf="title.errors?.required && title.touched" class="alert alert-danger" role="alert">
+                        Title is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <textarea type="text" formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
+                    <div *ngIf="description.errors?.required && description.touched" class="alert alert-danger" role="alert">
+                        Description is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Website</label>
+                    <input type="text" formControlName="website" class="form-control" id="exampleInputPassword1">
+                    <div *ngIf="website.errors?.required && website.touched" class="alert alert-danger" role="alert">
+                        Website is required
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Technologies</label>
+                    <div class="form-check" *ngFor="let technology of technologiesCreated">
+                        <input (change)="this.onTechnologyEventChange($event, technology)" class="form-check-input" type="checkbox" [attr.value]="technology.id" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{technology.title}}
+                        </label>
+                    </div>
+                    <div *ngIf="this.technologiesTouched && !this.getCountOfSelectedTechnologies()" class="alert alert-danger" role="alert">
+                        Technologies are required
+                    </div>
+                </div>
+                <div class="form-group" *ngFor="let image of this.imageUploadArray; index as i">
+                    <label for="exampleFormControlFile1">Image {{i}}</label>
+                    <input (change)="this.onFileEventChange($event, i)" type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

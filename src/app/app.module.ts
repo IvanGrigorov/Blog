@@ -18,6 +18,8 @@ import { BaseComponent } from './base/base.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserinfostoreService } from '../services/userinfostoreservice/userinfostore.service';
+import { CreateTechnologyComponent } from './create-technology/create-technology.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 
 
@@ -30,6 +32,8 @@ import { UserinfostoreService } from '../services/userinfostoreservice/userinfos
     LoginComponent,
     ProjectDetailsComponent,
     BaseComponent,
+    CreateTechnologyComponent,
+    CreateProjectComponent,
   ],
   imports: [
     BrowserModule,
