@@ -5,3 +5,11 @@ html, body {
 .carousel, .carousel * {
     height: 400px;
 } 
+
+.card {
+    margin-top: 10px;
+}
+
+.btn {
+    margin: 5px;
+}

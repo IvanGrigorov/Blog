@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <app-pnavigation></app-pnavigation>
+    <div *ngIf="!this.getTechnologiesCount()" class="alert alert-primary" role="alert">
+        There are currently no technologies !
+    </div>
+    <div *ngIf="this.getTechnologiesCount()" class="row">
+        <div class="col-sm-3" *ngFor="let technology of getTechnologies()">
+            <div class="card">
+                <!-- <img *ngIf="project.Gallery.length" class="card-img-top" src={{project.Gallery[0].FileName}} alt="Card image cap"> -->
+                <div class="card-body">
+                    <h5 class="card-title">{{technology.title}}</h5>
+                    <p>{{technology.description}}</p>
+                    <button *ngIf="this.isUserAdmin()" (click)="this.editTechnology(technology.id)" class="btn btn-warning">Edit</button>
+                    <button *ngIf="this.isUserAdmin()" (click)="this.deleteTechnology(technology.id)" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

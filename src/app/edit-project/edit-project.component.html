@@ -6,7 +6,7 @@
       </div>
     <div class="row" *ngIf="this.technologiesCreatedCount">
         <div class="col-lg-4 offset-lg-4">
-            <form [formGroup]="project" (ngSubmit)="create()">
+            <form [formGroup]="project" (ngSubmit)="edit()">
                 <div class="form-group">
                     <label for="exampleInputUserName">Title</label>
                     <input type="text" formControlName="title" class="form-control" id="exampleInputUserName" aria-describedby="userNameHelp">
@@ -40,13 +40,8 @@
                         Technologies are required
                     </div>
                 </div>
-                <div class="form-group" *ngFor="let image of this.imageUploadArray; index as i">
-                    <label for="exampleFormControlFile1">Image {{i}}</label>
-                    <input (change)="this.onFileEventChange($event, i)" type="file" class="form-control-file" id="exampleFormControlFile1">
-                </div>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
-            <button (click)="addMoreImages()" class="btn btn-primary">Add More Images</button>
         </div>
     </div>
 </div>

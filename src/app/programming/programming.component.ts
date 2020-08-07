@@ -5,6 +5,7 @@ import { AuthService } from 'src/services/auth/auth.service';
 import { BaseComponent } from '../base/base.component';
 import { ToastrService } from 'ngx-toastr';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,8 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
   constructor(private projectService: ProjectService, 
     protected authService: AuthService, 
     protected userInfoStore: UserinfostoreService,
-    private toastr: ToastrService) { 
+    private toastr: ToastrService,
+    private router: Router) { 
     super(authService, userInfoStore);
    }
 
@@ -44,6 +46,10 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
       this.toastr.success("You have deleted the project", "Success");
       this.ngOnInit();
     });
+  }
+
+  editProject(id: string) {
+    this.router.navigate(["programming/project", id, "edit"]);
   }
 
 }

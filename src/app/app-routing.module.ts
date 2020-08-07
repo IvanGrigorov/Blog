@@ -6,6 +6,12 @@ import { LoginComponent } from './login/login.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { CreateTechnologyComponent } from './create-technology/create-technology.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
+import { AllTechnologiesComponent } from './all-technologies/all-technologies.component';
+import { EditTechnologyComponent } from './edit-technology/edit-technology.component';
+
+
+
 
 import { AuthGuardService } from 'src/services/guards/auth-guard.service';
 
@@ -21,6 +27,10 @@ const routes: Routes = [
   { path: 'programming/project/:id', component: ProjectDetailsComponent },
   { path: 'technology/create', component: CreateTechnologyComponent, canActivate: [AuthGuardService] },
   { path: 'project/create', component: CreateProjectComponent, canActivate: [AuthGuardService] },
+  { path: 'programming/project/:id/edit', component: EditProjectComponent, canActivate: [AuthGuardService]},
+  { path: 'technologies/all', component: AllTechnologiesComponent, canActivate: [AuthGuardService] },
+  { path: 'programming/technology/:id/edit', component: EditTechnologyComponent, canActivate: [AuthGuardService]},
+
 
 ];
 

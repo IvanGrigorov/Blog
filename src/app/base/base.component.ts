@@ -16,6 +16,9 @@ export class BaseComponent implements OnInit {
   ngOnInit(): void {
     this.userInfoStore.userInfo$
       .subscribe(userInfo => {
+        if (!userInfo.userName) {
+          return;
+        }
         this.userInfo = userInfo;
       });
   }

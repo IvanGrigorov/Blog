@@ -15,12 +15,18 @@ export class ProjectService {
   private getProjectsUrl = environment.api + "programming/project/getall";
   private getProjectDetails = environment.api + "programming/project/"
   private deleteProjectUrl = environment.api + "programming/project/delete/"
+  private updateProjectUrl = environment.api + "programming/project/update/"
+
 
 
   constructor(private http: HttpClient) { }
 
   createProject(data) {
     return this.http.post(this.createProjectUrl, data)
+  }
+
+  editProject(data) {
+    return this.http.put(this.updateProjectUrl, data)
   }
 
   returnProjects() : Observable<Array<Project>> {

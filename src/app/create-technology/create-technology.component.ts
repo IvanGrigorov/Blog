@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TechnologyService } from '../../services/technology/technology.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class CreateTechnologyComponent implements OnInit {
 
   constructor(private fb: FormBuilder, 
     private technologyService: TechnologyService,
-    private toatsr: ToastrService) { 
+    private toatsr: ToastrService,
+    private router: Router) { 
     this.technology = fb.group({
       "title" : ['', [Validators.required]],
       "description" : ['', [Validators.required]],
@@ -38,6 +40,10 @@ export class CreateTechnologyComponent implements OnInit {
       .subscribe(result => {
         this.toatsr.success("You have successfuly created a technology", "Success");
       })
+  }
+
+  goToTechnologies() {
+    this.router.navigate(["technologies/all"]);
   }
 
 }

@@ -20,6 +20,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { UserinfostoreService } from '../services/userinfostoreservice/userinfostore.service';
 import { CreateTechnologyComponent } from './create-technology/create-technology.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
+import { AllTechnologiesComponent } from './all-technologies/all-technologies.component';
+import { EditTechnologyComponent } from './edit-technology/edit-technology.component';
 
 
 
@@ -34,6 +37,9 @@ import { CreateProjectComponent } from './create-project/create-project.componen
     BaseComponent,
     CreateTechnologyComponent,
     CreateProjectComponent,
+    EditProjectComponent,
+    AllTechnologiesComponent,
+    EditTechnologyComponent,
   ],
   imports: [
     BrowserModule,

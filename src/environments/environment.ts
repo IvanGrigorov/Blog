@@ -8,7 +8,8 @@ export const environment = {
   tokenLocalStorageHeader: 'token',
   sharedDataUserKey: 'user',
   sharedDataUserInfoKey: 'userinfo',
-  numberOfImagesPerProject: 5 
+  numberOfImagesPerProject: 5,
+  mode: '' 
 };
 
 /*
