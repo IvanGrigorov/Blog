@@ -11,7 +11,7 @@
           </p>
         </div>
         <div *ngIf="!this.getArticlesCount()" class="alert alert-primary" role="alert">
-          There are currently no projects !
+          There are currently no articles !
         </div>
         <div *ngIf="this.getArticlesCount()" class="row">
           <div class="col-sm-3" *ngFor="let article of getArticles()">
