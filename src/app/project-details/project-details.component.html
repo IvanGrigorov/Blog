@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="card">
-            <div *ngIf="this.getProjectDetails().gallery.length;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div *ngIf="this.getProjectDetails()?.gallery.length;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <div *ngFor="let image of this.getProjectDetails().gallery; index as i" [attr.class]="(i == 0) ? 'carousel-item active' : 'carousel-item'">
+                <div *ngFor="let image of this.getProjectDetails()?.gallery; index as i" [attr.class]="(i == 0) ? 'carousel-item active' : 'carousel-item'">
                   <img class="d-block w-100" src="{{this.getImage(image.fileName)}}" alt="Slide">
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -19,12 +19,14 @@
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{this.getProjectDetails().title}}</h5>
-              <p class="card-text">{{this.getProjectDetails().description}}</p>
-              <div>Date: {{this.getProjectDetails().createdOn}}</div>
-              <a href="{{this.getProjectDetails().website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
+              <h5 class="card-title">{{this.getProjectDetails()?.title}}</h5>
+              <p class="card-text">{{this.getProjectDetails()?.description}}</p>
+              <div>Date: {{this.getProjectDetails()?.createdOn}}</div>
+              <a href="{{this.getProjectDetails()?.website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
             </div>
           </div>
+          <!-- <div class="fb-like" [attr.data-href]="this.currentUrl" data-width="150" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+          <div class="fb-comments" [attr.data-href]="this.currentUrl" data-numposts="5" data-width="700"></div> -->
       </div>
       <div class="col-lg-4">
         <p>
@@ -33,7 +35,7 @@
         <div class="row">
           <div class="col">
             <div class="collapse multi-collapse" id="technologies">
-                <div class="list-group" *ngFor="let technology of this.getProjectDetails().technologies">
+                <div class="list-group" *ngFor="let technology of this.getProjectDetails()?.technologies">
                     <div href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{technology.title}}</h5>

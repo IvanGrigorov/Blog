@@ -16,16 +16,16 @@ export class HomeComponent implements OnInit {
   }
 
   programmingMode() {
-    environment.mode = "programming";
+    localStorage.setItem('mode', "programming");
     this.navigate();
   }
 
   articleMode() {
-    environment.mode = "article";
+    localStorage.setItem('mode', "article");
     this.navigate();
   }
 
   private navigate() {
-    this.router.navigate([environment.mode]);
+    this.router.navigate([localStorage.getItem(environment.modeKey)]);
   }
 }

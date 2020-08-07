@@ -6,6 +6,7 @@ import { BaseComponent } from '../base/base.component';
 import { ToastrService } from 'ngx-toastr';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 
@@ -50,6 +51,10 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
 
   editProject(id: string) {
     this.router.navigate(["programming/project", id, "edit"]);
+  }
+
+  update(eventData) {
+    this.projects = eventData;
   }
 
 }

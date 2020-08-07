@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../models/Project';
 import { ProjectService } from 'src/services/project/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImagesService } from 'src/services/images/images.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-details',
@@ -12,10 +13,12 @@ import { ImagesService } from 'src/services/images/images.service';
 export class ProjectDetailsComponent implements OnInit {
 
   private project : Project = null;
+  private _currentUrl;
 
   constructor(private route: ActivatedRoute, 
     private projectService : ProjectService,
-    private imageSerice : ImagesService) { }
+    private imageSerice : ImagesService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -23,6 +26,11 @@ export class ProjectDetailsComponent implements OnInit {
         this.project = project
       );
     })
+    this._currentUrl = environment.clientHost + this.router.url;
+  }
+
+  get currentUrl() {
+    return this._currentUrl;
   }
 
   getProjectDetails() : Project {

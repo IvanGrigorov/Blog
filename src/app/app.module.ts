@@ -18,6 +18,7 @@ import { BaseComponent } from './base/base.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { UserinfostoreService } from '../services/userinfostoreservice/userinfostore.service';
+import { SearchService } from '../services/search/search.service';
 import { CreateTechnologyComponent } from './create-technology/create-technology.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
@@ -55,6 +56,7 @@ import { EditTechnologyComponent } from './edit-technology/edit-technology.compo
     AuthGuardService,
     ImagesService,
     UserinfostoreService,
+    SearchService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

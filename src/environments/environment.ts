@@ -5,11 +5,12 @@
 export const environment = {
   production: false,
   api: "https://localhost:44313/",
+  clientHost: "http://localhost:4200",
   tokenLocalStorageHeader: 'token',
   sharedDataUserKey: 'user',
   sharedDataUserInfoKey: 'userinfo',
   numberOfImagesPerProject: 5,
-  mode: '' 
+  modeKey: 'mode' 
 };
 
 /*

@@ -9,11 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class TechnologyService {
 
-  private createTechnologyUrl = environment.api + "programming/technology/create";
-  private getTechnologiesUrl = environment.api + "programming/technology/getall";
-  private deleteTechnologiesUrl = environment.api + "programming/technology/delete/";
-  private getTechnologyUrl = environment.api + "programming/technology/";
-  private updateTechnologyUrl = environment.api + "programming/technology/update"
+  private createTechnologyUrl = environment.api + localStorage.getItem(environment.modeKey) + "/technology/create";
+  private getTechnologiesUrl = environment.api + localStorage.getItem(environment.modeKey) + "/technology/getall";
+  private deleteTechnologiesUrl = environment.api + localStorage.getItem(environment.modeKey) + "/technology/delete/";
+  private getTechnologyUrl = environment.api + localStorage.getItem(environment.modeKey) + "technology/";
+  private updateTechnologyUrl = environment.api + localStorage.getItem(environment.modeKey) + "/technology/update"
 
 
 

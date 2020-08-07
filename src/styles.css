@@ -3,13 +3,17 @@ html, body {
 }
 
 .carousel, .carousel * {
-    height: 400px;
+    height: 50vh;
 } 
 
-.card {
+.card, .fb-like {
     margin-top: 10px;
 }
 
 .btn {
     margin: 5px;
+}
+
+.fb_iframe_widget {
+    display: block !important;
 }
