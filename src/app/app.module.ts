@@ -12,6 +12,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuardService } from '../services/guards/auth-guard.service';
 import { TokenInterceptorService } from '../services/interceptor/token-interceptor.service';
+import { ErrorInterceptorService } from '../services/errorInterceptor/error-interceptor.service';
 import { ImagesService } from '../services/images/images.service';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { BaseComponent } from './base/base.component';
@@ -24,6 +25,16 @@ import { CreateProjectComponent } from './create-project/create-project.componen
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { AllTechnologiesComponent } from './all-technologies/all-technologies.component';
 import { EditTechnologyComponent } from './edit-technology/edit-technology.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleService } from './../services/article/article.service';
+import { EditArticleComponent } from './edit-article/edit-article.component';
+import { CreateArticleComponent } from './create-article/create-article.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { ErrorComponent } from './error/error.component';
+
+
 
 
 
@@ -41,6 +52,11 @@ import { EditTechnologyComponent } from './edit-technology/edit-technology.compo
     EditProjectComponent,
     AllTechnologiesComponent,
     EditTechnologyComponent,
+    ArticlesComponent,
+    EditArticleComponent,
+    CreateArticleComponent,
+    ArticleDetailsComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +66,8 @@ import { EditTechnologyComponent } from './edit-technology/edit-technology.compo
     BrowserAnimationsModule,
     ToastrModule,
     ToastrModule.forRoot(),
+    MatChipsModule,
+    MatIconModule
   ],
   providers: [
     AuthService,
@@ -57,9 +75,15 @@ import { EditTechnologyComponent } from './edit-technology/edit-technology.compo
     ImagesService,
     UserinfostoreService,
     SearchService,
+    ArticleService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptorService,
       multi: true
     }
   ],

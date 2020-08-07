@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
 html, body {
     height:100%;
 }
@@ -17,3 +19,16 @@ html, body {
 .fb_iframe_widget {
     display: block !important;
 }
+
+.bootstrap-tagsinput .tag {
+    color: white !important;
+    background-color: #5BC0DE !important;
+    border-radius: 3px;
+}
+
+.tagLabel {
+    margin: 5px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

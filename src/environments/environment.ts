@@ -10,6 +10,7 @@ export const environment = {
   sharedDataUserKey: 'user',
   sharedDataUserInfoKey: 'userinfo',
   numberOfImagesPerProject: 5,
+  numberOfImagesPerArticle: 5,
   modeKey: 'mode' 
 };
 

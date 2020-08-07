@@ -27,6 +27,10 @@ export class AuthService {
     localStorage.setItem(environment.tokenLocalStorageHeader, token);
   }
 
+  removeToken() {
+    localStorage.removeItem(environment.tokenLocalStorageHeader);
+  }
+
   getToken(token) : string {
     return localStorage.getItem(environment.tokenLocalStorageHeader);
   }

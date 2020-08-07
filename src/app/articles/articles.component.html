@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <app-pnavigation (updateResults)="update($event)"></app-pnavigation>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="jumbotron jumbotron-fliud">
+          <h1 class="display-4">Hi, folks!</h1>
+          <p class="lead">Welcome to my articles section!</p>
+          <hr class="my-4">
+          <p>Here I will post some interesting articles, essays or just notes. 
+              Topics will mainly include programming, cosmology, physics, sports, or even healthy living.
+          </p>
+        </div>
+        <div *ngIf="!this.getArticlesCount()" class="alert alert-primary" role="alert">
+          There are currently no projects !
+        </div>
+        <div *ngIf="this.getArticlesCount()" class="row">
+          <div class="col-sm-3" *ngFor="let article of getArticles()">
+            <div class="card">
+              <div class="card-body">
+                <img src="assets/images/programming/project.jpg" class="card-img-top" alt="Hobbies">
+                <h2 class="card-title">{{article.title}}</h2>
+                <a href="/hobbies/article/{{article.id}}" class="btn btn-primary">Get Details</a>
+                <button *ngIf="this.isUserAdmin()" (click)="this.editArticle(article.id)" class="btn btn-warning">Edit</button>
+                <button *ngIf="this.isUserAdmin()" (click)="this.deleteArticles(article.id)" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

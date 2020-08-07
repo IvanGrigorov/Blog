@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth/auth.service';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-basecomponent',
@@ -36,5 +37,9 @@ export class BaseComponent implements OnInit {
       return "";
     }
     return this.userInfo.userName;
+  }
+
+  getMode() {
+    return localStorage.getItem(environment.modeKey);
   }
 }

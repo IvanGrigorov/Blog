@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <app-pnavigation></app-pnavigation>
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+            <div *ngIf="this.getArticleDetails()?.gallery.length;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div *ngFor="let image of this.getArticleDetails()?.gallery; index as i" [attr.class]="(i == 0) ? 'carousel-item active' : 'carousel-item'">
+                  <img class="d-block w-100" src="{{this.getImage(image.fileName)}}" alt="Slide">
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">{{this.getArticleDetails()?.title}}</h2>
+              <p class="card-text">{{this.getArticleDetails()?.body}}</p>
+              <div>Date: {{this.getArticleDetails()?.createdOn}}</div>
+            </div>
+          </div>
+          <div class="fb-like" [attr.data-href]="this.currentUrl" data-width="150" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+          <div class="fb-comments" [attr.data-href]="this.currentUrl" data-numposts="5" data-width="700"></div>
+      </div>
+      <div class="col-lg-4" *ngIf="this.articleDetails">
+        <div class="row">
+          <div class="col">
+            <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                <mat-chip *ngFor="let tag of tags" selected >
+                  {{tag}}
+                </mat-chip>
+              </mat-chip-list>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

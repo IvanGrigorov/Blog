@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   articleMode() {
-    localStorage.setItem('mode', "article");
+    localStorage.setItem('mode', "hobbies");
     this.navigate();
   }
 

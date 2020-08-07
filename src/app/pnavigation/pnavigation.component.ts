@@ -39,6 +39,10 @@ export class PnavigationComponent extends BaseComponent implements OnInit {
     return this._formQuery.get('query');
   }
 
+  logOut() {
+    this.authService.removeToken();
+  }
+
 
    search() {
     let data = this._formQuery.value;

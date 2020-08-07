@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl, FormCon
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/services/project/project.service';
 import { environment } from 'src/environments/environment';
+import { Helpers } from '../../helpers/helperFunctions';
+
 
 @Component({
   selector: 'app-create-project',
@@ -120,7 +122,7 @@ export class CreateProjectComponent implements OnInit {
 
 
   create() {
-    this._project.value.createdOn = new Date().toString();
+    this._project.value.createdOn = Helpers.getCurrentDate();
     this.projectService.createProject(this.convertFormControllToFormData())
       .subscribe(result => {
         this.toatsr.success("Project created successfuly!", "Success");

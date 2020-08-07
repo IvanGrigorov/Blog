@@ -19,14 +19,14 @@
               </div>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{this.getProjectDetails()?.title}}</h5>
+              <h2 class="card-title">{{this.getProjectDetails()?.title}}</h2>
               <p class="card-text">{{this.getProjectDetails()?.description}}</p>
               <div>Date: {{this.getProjectDetails()?.createdOn}}</div>
               <a href="{{this.getProjectDetails()?.website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
             </div>
           </div>
-          <!-- <div class="fb-like" [attr.data-href]="this.currentUrl" data-width="150" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
-          <div class="fb-comments" [attr.data-href]="this.currentUrl" data-numposts="5" data-width="700"></div> -->
+          <div class="fb-like" [attr.data-href]="this.currentUrl" data-width="150" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+          <div class="fb-comments" [attr.data-href]="this.currentUrl" data-numposts="5" data-width="700"></div>
       </div>
       <div class="col-lg-4">
         <p>

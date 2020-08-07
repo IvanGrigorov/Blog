@@ -2,7 +2,7 @@
     <app-pnavigation (updateResults)="update($event)"></app-pnavigation>
     <div class="row">
       <div class="col-sm-12">
-        <div class="jumbotron">
+        <div class="jumbotron jumbotron-fliud">
           <h1 class="display-4">Hi, folks!</h1>
           <p class="lead">Welcome to my programming portfolio!</p>
           <hr class="my-4">
@@ -16,9 +16,9 @@
         <div *ngIf="this.getProjectsCount()" class="row">
           <div class="col-sm-3" *ngFor="let project of getProjects()">
             <div class="card">
-              <!-- <img *ngIf="project.Gallery.length" class="card-img-top" src={{project.Gallery[0].FileName}} alt="Card image cap"> -->
               <div class="card-body">
-                <h5 class="card-title">{{project.title}}</h5>
+                <img src="assets/images/programming/project.jpg" class="card-img-top" alt="Hobbies">
+                <h2 class="card-title">{{project.title}}</h2>
                 <a href="/programming/project/{{project.id}}" class="btn btn-primary">Get Details</a>
                 <button *ngIf="this.isUserAdmin()" (click)="this.editProject(project.id)" class="btn btn-warning">Edit</button>
                 <button *ngIf="this.isUserAdmin()" (click)="this.deleteProject(project.id)" class="btn btn-danger">Delete</button>

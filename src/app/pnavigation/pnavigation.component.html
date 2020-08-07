@@ -9,17 +9,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/programming">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [attr.href]="'/' + getMode()" >Home <span class="sr-only">(current)</span></a>
         </li>
         
         <li *ngIf="!this.isUserLogged()" class="nav-item">
           <a class="nav-link" href="/login">Log In</a>
         </li>
-        <li *ngIf="this.isUserAdmin()" class="nav-item">
+        <li *ngIf="this.isUserLogged()" class="nav-item">
+          <a (click)="this.logOut()" class="nav-link" href="/home">Log out</a>
+        </li>
+        <li *ngIf="this.isUserAdmin() && this.getMode() == 'programming'" class="nav-item">
           <a class="nav-link" href="/technology/create">Add technology</a>
         </li>
-        <li *ngIf="this.isUserAdmin()" class="nav-item">
+        <li *ngIf="this.isUserAdmin() && this.getMode() == 'programming'" class="nav-item">
           <a class="nav-link" href="/project/create">Add project</a>
+        </li>
+        <li *ngIf="this.isUserAdmin() && this.getMode() == 'hobbies'" class="nav-item">
+          <a class="nav-link" href="/article/create">Add Article</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/IvanGrigorov">Github</a>
