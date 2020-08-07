@@ -33,6 +33,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ErrorComponent } from './error/error.component';
+import { InfoComponent } from './info/info.component';
 
 
 
@@ -57,6 +58,7 @@ import { ErrorComponent } from './error/error.component';
     CreateArticleComponent,
     ArticleDetailsComponent,
     ErrorComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,

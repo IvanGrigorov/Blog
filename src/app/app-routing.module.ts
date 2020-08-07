@@ -14,6 +14,8 @@ import { AllTechnologiesComponent } from './all-technologies/all-technologies.co
 import { EditTechnologyComponent } from './edit-technology/edit-technology.component';
 import { CreateArticleComponent } from './create-article/create-article.component';
 import { ErrorComponent } from './error/error.component';
+import { InfoComponent } from './info/info.component';
+
 
 
 
@@ -41,6 +43,7 @@ const routes: Routes = [
   { path: 'programming/technology/:id/edit', component: EditTechnologyComponent, canActivate: [AuthGuardService]},
   { path: 'hobbies/article/:id/edit', component: EditArticleComponent, canActivate: [AuthGuardService]},
   { path: 'article/create', component: CreateArticleComponent, canActivate: [AuthGuardService]},
+  { path: 'info', component: InfoComponent},
   { path: '**', component: ErrorComponent},
 
 
