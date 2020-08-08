@@ -44,6 +44,9 @@ export class AuthService {
   }
 
   saveUserData() {
+    if (!this.getToken(environment.tokenLocalStorageHeader)) {
+      return;
+    }
     this.getUserData().subscribe(userdata => {
       if (userdata.userName) {
         this.userStoreService.addNewUser(userdata);
