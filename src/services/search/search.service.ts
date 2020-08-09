@@ -11,7 +11,8 @@ import { Article } from 'src/app/models/Article';
 })
 export class SearchService {
 
-  private searchUrl = environment.api + localStorage.getItem(environment.modeKey) + "/search"
+  private searchUrl = environment.api + localStorage.getItem(environment.modeKey) + "/search";
+  private discoveryUrl = environment.api + localStorage.getItem(environment.modeKey) + "/Discovery/Discover";
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,6 @@ export class SearchService {
   }
 
   searchArticle(data) : Observable<Array<Article>>{
-    return this.http.post<Array<Article>>(this.searchUrl, data)
+    return this.http.post<Array<Article>>(this.discoveryUrl, data)
   }
 }
