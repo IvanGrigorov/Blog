@@ -11,10 +11,14 @@ import { Article } from 'src/app/models/Article';
 })
 export class SearchService {
 
-  private searchUrl = environment.api + localStorage.getItem(environment.modeKey) + "/search";
-  private discoveryUrl = environment.api + localStorage.getItem(environment.modeKey) + "/Discovery/Discover";
+  private searchUrl;
+  private discoveryUrl
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.searchUrl = environment.api + localStorage.getItem(environment.modeKey) + "/search";
+    this.discoveryUrl = environment.api + localStorage.getItem(environment.modeKey) + "/Discovery/Discover";
+  
+   }
 
   searchProgramming(data) : Observable<Array<Project>> {
     return this.http.post<Array<Project>>(this.searchUrl, data)
