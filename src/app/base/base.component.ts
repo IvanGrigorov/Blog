@@ -42,6 +42,10 @@ export class BaseComponent implements OnInit {
   }
 
   getMode() {
-    return this.router.url.split('/')[1];
+    let mode = this.router.url.split('/')[1];
+    if (mode != "progrmming" && mode != "hobbies") {
+      mode = (localStorage.getItem(environment.modeKey)) ? localStorage.getItem(environment.modeKey) : 'home' ;
+    }
+    return mode;
   }
 }
