@@ -11,11 +11,12 @@ import { Project } from '../../app/models/Project';
 })
 export class ProjectService {
 
-  private createProjectUrl = environment.api + localStorage.getItem(environment.modeKey) + "/project/create";
-  private getProjectsUrl = environment.api + localStorage.getItem(environment.modeKey) + "/project/getall";
-  private getProjectDetails = environment.api + localStorage.getItem(environment.modeKey) + "/project/"
-  private deleteProjectUrl = environment.api + localStorage.getItem(environment.modeKey) + "/project/delete/"
-  private updateProjectUrl = environment.api + localStorage.getItem(environment.modeKey) + "/project/update/"
+  private section = "programming";
+  private createProjectUrl = environment.api + this.section + "/project/create";
+  private getProjectsUrl = environment.api + this.section  + "/project/getall";
+  private getProjectDetails = environment.api + this.section  + "/project/"
+  private deleteProjectUrl = environment.api + this.section  + "/project/delete/"
+  private updateProjectUrl = environment.api + this.section  + "/project/update/"
 
 
 

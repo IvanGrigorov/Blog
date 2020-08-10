@@ -9,11 +9,12 @@ import { Article } from 'src/app/models/Article';
 })
 export class ArticleService {
 
-  private createArticletUrl = environment.api + localStorage.getItem(environment.modeKey) + "/article/create";
-  private getArticlesUrl = environment.api + localStorage.getItem(environment.modeKey) + "/article/all";
-  private getArticleDetails = environment.api + localStorage.getItem(environment.modeKey) + "/article/"
-  private deleteArticleUrl = environment.api + localStorage.getItem(environment.modeKey) + "/article/delete/"
-  private updateArticleUrl = environment.api + localStorage.getItem(environment.modeKey) + "/article/update/"
+  private section = "hobbies";
+  private createArticletUrl = environment.api + this.section + "/article/create";
+  private getArticlesUrl = environment.api + this.section  + "/article/all";
+  private getArticleDetails = environment.api + this.section + "/article/"
+  private deleteArticleUrl = environment.api + this.section  + "/article/delete/"
+  private updateArticleUrl = environment.api + this.section + "/article/update/"
 
 
 

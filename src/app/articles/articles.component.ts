@@ -21,8 +21,9 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
     protected authService: AuthService, 
     protected userInfoStore: UserinfostoreService,
     private toastr: ToastrService,
-    private router: Router) { 
-    super(authService, userInfoStore);
+    protected router: Router) { 
+    super(authService, userInfoStore, router);
+    localStorage.setItem('mode', "hobbies");
    }
 
   ngOnInit(): void {

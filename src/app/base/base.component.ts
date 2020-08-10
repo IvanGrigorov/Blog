@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/services/auth/auth.service';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-basecomponent',
@@ -10,7 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class BaseComponent implements OnInit {
 
-  constructor(protected authService: AuthService, protected userInfoStore: UserinfostoreService) { }
+  constructor(protected authService: AuthService, protected userInfoStore: UserinfostoreService,
+    protected router: Router) { }
 
   userInfo : any = null;
   
@@ -40,6 +42,6 @@ export class BaseComponent implements OnInit {
   }
 
   getMode() {
-    return localStorage.getItem(environment.modeKey);
+    return this.router.url.split('/')[1];
   }
 }

@@ -18,10 +18,10 @@ export class AllTechnologiesComponent extends BaseComponent implements OnInit {
 
   constructor(private technologyService : TechnologyService,
     private toatsr : ToastrService,
-    private router : Router,
+    protected router : Router,
     protected authService : AuthService,
     protected userInfoStore : UserinfostoreService) { 
-      super(authService, userInfoStore)
+      super(authService, userInfoStore, router)
     }
 
   ngOnInit(): void {

@@ -15,8 +15,8 @@ export class SearchService {
   private discoveryUrl
 
   constructor(private http: HttpClient) {
-    this.searchUrl = environment.api + localStorage.getItem(environment.modeKey) + "/search";
-    this.discoveryUrl = environment.api + localStorage.getItem(environment.modeKey) + "/Discovery/Discover";
+    this.searchUrl = environment.api + "programming/search";
+    this.discoveryUrl = environment.api + "hobbies/Discovery/Discover";
   
    }
 

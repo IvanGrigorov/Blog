@@ -5,6 +5,7 @@ import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfo
 import { SearchService } from 'src/services/search/search.service';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pnavigation',
@@ -20,8 +21,9 @@ export class PnavigationComponent extends BaseComponent implements OnInit {
   constructor(protected authService: AuthService,
     protected userInfoStore: UserinfostoreService,
     private searchService: SearchService,
-    private fb : FormBuilder) {
-    super(authService, userInfoStore);
+    private fb : FormBuilder,
+    protected router: Router) {
+    super(authService, userInfoStore, router);
     this._formQuery = fb.group({
       "query" : ['', [Validators.required]],
     });
