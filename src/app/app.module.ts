@@ -34,6 +34,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ErrorComponent } from './error/error.component';
 import { InfoComponent } from './info/info.component';
+import { LoadingComponent } from './loading/loading.component';
+import { HttploadinginterceptorService } from '../services/htmlLoadingInterceptor/httploadinginterceptor.service';
+import { LodingstateService } from '../services/loadingState/lodingstate.service';
+
 
 
 
@@ -59,6 +63,7 @@ import { InfoComponent } from './info/info.component';
     ArticleDetailsComponent,
     ErrorComponent,
     InfoComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,7 @@ import { InfoComponent } from './info/info.component';
     UserinfostoreService,
     SearchService,
     ArticleService,
+    LodingstateService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
@@ -86,6 +92,11 @@ import { InfoComponent } from './info/info.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttploadinginterceptorService,
       multi: true
     }
   ],

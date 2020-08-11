@@ -6,6 +6,7 @@ import { SearchService } from 'src/services/search/search.service';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LodingstateService } from 'src/services/loadingState/lodingstate.service';
 
 @Component({
   selector: 'app-pnavigation',
@@ -16,21 +17,31 @@ export class PnavigationComponent extends BaseComponent implements OnInit {
 
   userInfo : any = null;
   private _formQuery : FormGroup;
+  private _loading: boolean = true;
+
   @Output() updateResults = new EventEmitter<Array<any>>();
 
   constructor(protected authService: AuthService,
     protected userInfoStore: UserinfostoreService,
     private searchService: SearchService,
     private fb : FormBuilder,
-    protected router: Router) {
-    super(authService, userInfoStore, router);
-    this._formQuery = fb.group({
-      "query" : ['', [Validators.required]],
-    });
+    protected router: Router,
+    protected loadingState: LodingstateService) {
+      super(authService, userInfoStore, router);
+      this._formQuery = fb.group({
+        "query" : ['', [Validators.required]],
+      });
+      this.loadingState.loading$.subscribe(result => {
+        this._loading = result;
+      })
    }
 
    ngOnInit() {
     super.ngOnInit();
+   }
+
+   get loading() {
+     return this._loading;
    }
 
    get formQuery() {
