@@ -11,7 +11,7 @@ import { LoadingstateService } from 'src/services/loadingState/loadingstate.serv
 })
 export class HomeComponent implements OnInit {
  
-  private _loading: boolean = true;
+  private _loading: boolean = false;
   constructor(private router: Router, private loadingState : LoadingstateService) {
     this.loadingState.loading$.subscribe(result => {
       this._loading = result;
