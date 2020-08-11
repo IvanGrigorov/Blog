@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpClient, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LodingstateService } from '../loadingState/lodingstate.service';
+import { LoadingstateService } from '../loadingState/loadingstate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { LodingstateService } from '../loadingState/lodingstate.service';
 export class HttploadinginterceptorService implements HttpInterceptor {
 
   private _requests: HttpRequest<any>[] = [];
-  constructor(private loadingState: LodingstateService) { }
+  constructor(private loadingState: LoadingstateService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this._requests.push(req);

@@ -5,7 +5,7 @@ import { HttpRequest } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class LodingstateService {
+export class LoadingstateService {
 
   constructor() { }
 

@@ -6,7 +6,7 @@ import { SearchService } from 'src/services/search/search.service';
 import { environment } from 'src/environments/environment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LodingstateService } from 'src/services/loadingState/lodingstate.service';
+import { LoadingstateService } from 'src/services/loadingState/loadingstate.service';
 
 @Component({
   selector: 'app-pnavigation',
@@ -26,7 +26,7 @@ export class PnavigationComponent extends BaseComponent implements OnInit {
     private searchService: SearchService,
     private fb : FormBuilder,
     protected router: Router,
-    protected loadingState: LodingstateService) {
+    protected loadingState: LoadingstateService) {
       super(authService, userInfoStore, router);
       this._formQuery = fb.group({
         "query" : ['', [Validators.required]],

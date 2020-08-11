@@ -36,7 +36,7 @@ import { ErrorComponent } from './error/error.component';
 import { InfoComponent } from './info/info.component';
 import { LoadingComponent } from './loading/loading.component';
 import { HttploadinginterceptorService } from '../services/htmlLoadingInterceptor/httploadinginterceptor.service';
-import { LodingstateService } from '../services/loadingState/lodingstate.service';
+import { LoadingstateService } from '../services/loadingState/loadingstate.service';
 
 
 
@@ -83,7 +83,7 @@ import { LodingstateService } from '../services/loadingState/lodingstate.service
     UserinfostoreService,
     SearchService,
     ArticleService,
-    LodingstateService,
+    LoadingstateService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
