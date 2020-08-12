@@ -8,7 +8,7 @@
             <div class="card">
                 <!-- <img *ngIf="project.Gallery.length" class="card-img-top" src={{project.Gallery[0].FileName}} alt="Card image cap"> -->
                 <div class="card-body">
-                    <h5 class="card-title">{{technology.title}}</h5>
+                    <h2 class="card-title">{{technology.title}}</h2>
                     <p>{{technology.description}}</p>
                     <button *ngIf="this.isUserAdmin()" (click)="this.editTechnology(technology.id)" class="btn btn-warning">Edit</button>
                     <button *ngIf="this.isUserAdmin()" (click)="this.deleteTechnology(technology.id)" class="btn btn-danger">Delete</button>
