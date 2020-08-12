@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
               <h2 class="card-title">{{this.getProjectDetails()?.title}}</h2>
-              <p class="card-text">{{this.getProjectDetails()?.description}}</p>
+              <p class="card-text" [innerHTML]="getProjectDetails()?.description"></p>
               <div>Date: {{this.getProjectDetails()?.createdOn}}</div>
               <a href="{{this.getProjectDetails()?.website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
             </div>

@@ -20,7 +20,7 @@
             </div>
             <div class="card-body">
               <h2 class="card-title">{{this.getArticleDetails()?.title}}</h2>
-              <p class="card-text">{{this.getArticleDetails()?.body}}</p>
+              <p class="card-text" [innerHTML]="getArticleDetails()?.body"></p>
               <div>Date: {{this.getArticleDetails()?.createdOn}}</div>
             </div>
           </div>
