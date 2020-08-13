@@ -26,6 +26,8 @@ export class CreateArticleComponent implements OnInit {
       });
   }
 
+  private selectionIndex = 0;
+  private previewMode = false;
   private _article : FormGroup;
   private _files : Array<any> = [];
   private _formKeys : Array<string> = ['title', 'body', 'createdOn'];
@@ -36,6 +38,14 @@ export class CreateArticleComponent implements OnInit {
 
 
   ngOnInit(): void {
+  }
+
+  get preview() {
+    return this.previewMode;
+  }
+
+  set preview(value) {
+    this.previewMode = value;
   }
 
   get tagsInput() {
@@ -113,6 +123,23 @@ export class CreateArticleComponent implements OnInit {
     }
     formData.append('tagsJson', this.tagsInput.join(','));
     return formData;
+  }
+
+  change(event) {
+    this.selectionIndex = event.target.selectionStart;
+  }
+
+  updateBody(eventData) {
+    this._article.get("body").setValue(this.body.value.substring(0, this.selectionIndex) + eventData + this.body.value.substring(this.selectionIndex));
+    this.selectionIndex = 0;
+  }
+
+  enablePreview() {
+    this.preview = true;
+  }
+
+  clear() {
+    this.preview = false;
   }
 
 

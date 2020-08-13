@@ -27,7 +27,8 @@ export class CreateProjectComponent implements OnInit {
         "createdOn" : ['', [Validators.required]],
       });
   }
-
+  private selectionIndex = 0;
+  private previewMode = false;
   private _technologiesCreated : Array<Technology> = [];
   private _project : FormGroup;
   private _files : Array<any> = [];
@@ -36,7 +37,13 @@ export class CreateProjectComponent implements OnInit {
   private _technologiesTouched : boolean = false;
 
 
+  get preview() {
+    return this.previewMode;
+  }
 
+  set preview(value) {
+    this.previewMode = value;
+  }
 
   ngOnInit(): void {
     this.technologyService.returnAllTechnologies()
@@ -120,6 +127,26 @@ export class CreateProjectComponent implements OnInit {
     return formData;
   }
 
+  change(event) {
+    this.selectionIndex = event.target.selectionStart;
+  }
+
+  updateDescription(eventData) {
+    this._project.get("description").setValue(this.description.value.substring(0, this.selectionIndex) + eventData + this.description.value.substring(this.selectionIndex));
+    this.selectionIndex = 0;
+  }
+
+  enablePreview() {
+    this.preview = true;
+  }
+
+  closePvw(eventData) {
+    this.preview = eventData;
+  }
+
+  clear() {
+    this.preview = false;
+  }
 
   create() {
     this._project.value.createdOn = Helpers.getCurrentDate();

@@ -1,0 +1,17 @@
+#preview {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#preview .card-text {
+    width: 90vw;
+    height: 90vh;
+}

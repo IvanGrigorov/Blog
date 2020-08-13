@@ -37,6 +37,7 @@ import { InfoComponent } from './info/info.component';
 import { LoadingComponent } from './loading/loading.component';
 import { HttploadinginterceptorService } from '../services/htmlLoadingInterceptor/httploadinginterceptor.service';
 import { LoadingstateService } from '../services/loadingState/loadingstate.service';
+import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
 
 
 
@@ -64,6 +65,7 @@ import { LoadingstateService } from '../services/loadingState/loadingstate.servi
     ErrorComponent,
     InfoComponent,
     LoadingComponent,
+    EditorButtonsComponent
   ],
   imports: [
     BrowserModule,

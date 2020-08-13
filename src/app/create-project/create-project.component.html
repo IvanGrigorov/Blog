@@ -1,3 +1,7 @@
+<div id="preview" *ngIf="this.preview">
+    <p class="card-text" [innerHTML]="this.description.value"></p>
+    <button (click)="clear()" type="button" class="btn btn-primary">Clear</button>
+</div>
 <div class="container-fluid">
     <app-pnavigation></app-pnavigation>
     <div *ngIf="!this.technologiesCreatedCount" class="alert alert-primary" role="alert">
@@ -14,12 +18,14 @@
                         Title is required
                     </div>
                 </div>
+                <app-editor-buttons (contentUpdate)="updateDescription($event)"></app-editor-buttons>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                    <textarea type="text" formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
+                    <textarea (change)="change($event)" type="text" formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
                     <div *ngIf="description.errors?.required && description.touched" class="alert alert-danger" role="alert">
                         Description is required
                     </div>
+                    <button (click)="enablePreview()" type="button" class="btn btn-primary">Preview</button>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Website</label>
