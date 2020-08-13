@@ -21,7 +21,7 @@
                 <app-editor-buttons (contentUpdate)="updateDescription($event)"></app-editor-buttons>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Description</label>
-                    <textarea (change)="change($event)" type="text" formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
+                    <textarea (focusout)="change($event)" type="text" formControlName="description" class="form-control" id="exampleInputPassword1"></textarea>
                     <div *ngIf="description.errors?.required && description.touched" class="alert alert-danger" role="alert">
                         Description is required
                     </div>
