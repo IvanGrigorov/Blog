@@ -25,6 +25,9 @@ export class ErrorInterceptorService implements HttpInterceptor {
             errorMsg == "Wrong Password !" || errorMsg == "Wrong Username !")) {
             this.router.navigate(['login']);
           }
+          else if (error.status == "400" && errorMsg.indexOf("field is required.") > -1) {
+            return throwError(error);
+          }
           else {
             this.router.navigate(['error'], { state: { errorMsg: errorMsg}});
           }
