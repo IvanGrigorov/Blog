@@ -28,15 +28,10 @@ export class HomeComponent implements OnInit {
   
   programmingMode() {
     localStorage.setItem('mode', "programming");
-    this.navigate();
   }
 
   articleMode() {
     localStorage.setItem('mode', "hobbies");
-    this.navigate();
   }
 
-  private navigate() {
-    this.router.navigate([localStorage.getItem(environment.modeKey)]);
-  }
 }
