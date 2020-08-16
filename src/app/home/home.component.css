@@ -1,3 +1,7 @@
 .card-img-top {
     height: 70vh;
 }
+
+.btn.btn-primary {
+    color: white;
+}
