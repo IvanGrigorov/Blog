@@ -4,6 +4,7 @@ import { ProjectService } from 'src/services/project/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImagesService } from 'src/services/images/images.service';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project-details',
@@ -18,13 +19,15 @@ export class ProjectDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
     private projectService : ProjectService,
     private imageSerice : ImagesService,
-    private router: Router) { }
+    private router: Router,
+    private title: Title) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.projectService.returnProject(params.id).subscribe(project => 
-        this.project = project
-      );
+      this.projectService.returnProject(params.id).subscribe(project => {
+        this.project = project;
+        this.title.setTitle(this.project.title);
+      });
     })
     this._currentUrl = environment.clientHost + this.router.url;
   }

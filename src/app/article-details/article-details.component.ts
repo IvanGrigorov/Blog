@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/services/article/article.service';
 import { ImagesService } from 'src/services/images/images.service';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article-details',
@@ -18,13 +19,15 @@ export class ArticleDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
     private articleService : ArticleService,
     private imageSerice : ImagesService,
-    private router: Router) { }
+    private router: Router,
+    private title: Title) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.articleService.returnArticle(params.id).subscribe(article => 
-        this.article = article
-      );
+      this.articleService.returnArticle(params.id).subscribe(article => {
+        this.article = article;
+        this.title.setTitle(this.article.title);
+      });
     })
     this._currentUrl = environment.clientHost + this.router.url;
   }
