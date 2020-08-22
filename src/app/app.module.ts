@@ -38,6 +38,8 @@ import { LoadingComponent } from './loading/loading.component';
 import { HttploadinginterceptorService } from '../services/htmlLoadingInterceptor/httploadinginterceptor.service';
 import { LoadingstateService } from '../services/loadingState/loadingstate.service';
 import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
+import { SEOService } from '../services/seo/seo.service';
+
 
 
 
@@ -86,6 +88,7 @@ import { EditorButtonsComponent } from './editor-buttons/editor-buttons.componen
     SearchService,
     ArticleService,
     LoadingstateService,
+    SEOService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

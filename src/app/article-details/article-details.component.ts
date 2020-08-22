@@ -5,6 +5,7 @@ import { ArticleService } from 'src/services/article/article.service';
 import { ImagesService } from 'src/services/images/images.service';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { SEOService } from 'src/services/seo/seo.service';
 
 @Component({
   selector: 'app-article-details',
@@ -20,16 +21,23 @@ export class ArticleDetailsComponent implements OnInit {
     private articleService : ArticleService,
     private imageSerice : ImagesService,
     private router: Router,
-    private title: Title) { }
+    private title: Title,
+    private seoService: SEOService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.articleService.returnArticle(params.id).subscribe(article => {
         this.article = article;
         this.title.setTitle(this.article.title);
+        this.seoService.updateSEO(this.article.title, this.article.title, environment.clientHost + this.router.url);
+        this.seoService.updateKeywords(this.article.tags);
       });
     })
     this._currentUrl = environment.clientHost + this.router.url;
+  }
+
+  public ngOnDestroy() {
+    this.seoService.resetMetaTags();
   }
 
   get currentUrl() {

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ImagesService } from 'src/services/images/images.service';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { SEOService } from 'src/services/seo/seo.service';
 
 @Component({
   selector: 'app-project-details',
@@ -20,16 +21,23 @@ export class ProjectDetailsComponent implements OnInit {
     private projectService : ProjectService,
     private imageSerice : ImagesService,
     private router: Router,
-    private title: Title) { }
+    private title: Title,
+    private seoService: SEOService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.projectService.returnProject(params.id).subscribe(project => {
         this.project = project;
         this.title.setTitle(this.project.title);
+        this.seoService.updateSEO(this.project.title, this.project.title, environment.clientHost + this.router.url);
+        this.seoService.updateKeywords(this.project.title);
       });
     })
     this._currentUrl = environment.clientHost + this.router.url;
+  }
+
+  public ngOnDestroy() {
+    this.seoService.resetMetaTags();
   }
 
   get currentUrl() {
