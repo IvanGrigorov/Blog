@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SEOService {
 
-  constructor(private meta: Meta) { }
+
+  constructor(private meta: Meta,
+    @Inject(DOCUMENT) private dom) { }
 
   updateSEO(title: string, description: string, url: string) {
     this.updateFBSEO(title, description, url);
@@ -43,6 +47,19 @@ export class SEOService {
     this.meta.removeTag("name='twitter:description'");
     this.updateKeywords("");
   }
+
+  createCanonicalURL() {
+    let link: HTMLLinkElement = this.dom.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    let exists = this.dom.querySelector("link[rel='canonical']");
+    if (exists) {
+      exists.setAttribute('href', this.dom.URL);
+    }
+    else {
+      this.dom.head.appendChild(link);
+      link.setAttribute('href', this.dom.URL);
+    }
+ }
 
   
 }

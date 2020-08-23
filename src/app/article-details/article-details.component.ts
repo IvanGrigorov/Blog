@@ -22,7 +22,8 @@ export class ArticleDetailsComponent implements OnInit {
     private imageSerice : ImagesService,
     private router: Router,
     private title: Title,
-    private seoService: SEOService) { }
+    private seoService: SEOService) { 
+    }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,6 +34,7 @@ export class ArticleDetailsComponent implements OnInit {
         this.seoService.updateKeywords(this.article.tags);
       });
     })
+    this.seoService.createCanonicalURL();
     this._currentUrl = environment.clientHost + this.router.url;
   }
 

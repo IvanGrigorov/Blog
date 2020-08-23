@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SEOService } from 'src/services/seo/seo.service';
 
 
 
@@ -23,7 +24,8 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
     protected authService: AuthService, 
     protected userInfoStore: UserinfostoreService,
     private toastr: ToastrService,
-    protected router: Router) { 
+    protected router: Router,
+    private seoService: SEOService) { 
     super(authService, userInfoStore, router);
     localStorage.setItem('mode', "programming");
    }
@@ -33,6 +35,7 @@ export class ProgrammingComponent extends BaseComponent implements OnInit {
       this.projects = projectArray;
     })
     super.ngOnInit();
+    this.seoService.createCanonicalURL();
   }
 
   getProjects() : Array<Project> {

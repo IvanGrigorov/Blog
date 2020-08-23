@@ -6,6 +6,7 @@ import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfo
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Article } from '../models/Article';
+import { SEOService } from 'src/services/seo/seo.service';
 
 @Component({
   selector: 'app-articles',
@@ -21,7 +22,8 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
     protected authService: AuthService, 
     protected userInfoStore: UserinfostoreService,
     private toastr: ToastrService,
-    protected router: Router) { 
+    protected router: Router,
+    private seoService: SEOService) { 
     super(authService, userInfoStore, router);
     localStorage.setItem('mode', "hobbies");
    }
@@ -31,6 +33,7 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
       this.articles = articlesArray;
     })
     super.ngOnInit();
+    this.seoService.createCanonicalURL();
   }
 
   getArticles() : Array<Article> {

@@ -33,6 +33,7 @@ export class ProjectDetailsComponent implements OnInit {
         this.seoService.updateKeywords(this.project.title);
       });
     })
+    this.seoService.createCanonicalURL();
     this._currentUrl = environment.clientHost + this.router.url;
   }
 

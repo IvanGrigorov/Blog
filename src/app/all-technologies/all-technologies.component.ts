@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BaseComponent } from '../base/base.component';
 import { AuthService } from 'src/services/auth/auth.service';
 import { UserinfostoreService } from 'src/services/userinfostoreservice/userinfostore.service';
+import { SEOService } from 'src/services/seo/seo.service';
 
 @Component({
   selector: 'app-all-technologies',
@@ -20,7 +21,8 @@ export class AllTechnologiesComponent extends BaseComponent implements OnInit {
     private toatsr : ToastrService,
     protected router : Router,
     protected authService : AuthService,
-    protected userInfoStore : UserinfostoreService) { 
+    protected userInfoStore : UserinfostoreService,
+    private seoService: SEOService) { 
       super(authService, userInfoStore, router)
     }
 
@@ -29,6 +31,7 @@ export class AllTechnologiesComponent extends BaseComponent implements OnInit {
       this._technologies = technologies;
     })
     super.ngOnInit();
+    this.seoService.createCanonicalURL();
   }
 
   getTechnologies() : Array<Technology> {

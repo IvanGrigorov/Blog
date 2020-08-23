@@ -40,12 +40,6 @@ import { LoadingstateService } from '../services/loadingState/loadingstate.servi
 import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
 import { SEOService } from '../services/seo/seo.service';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +61,7 @@ import { SEOService } from '../services/seo/seo.service';
     ErrorComponent,
     InfoComponent,
     LoadingComponent,
-    EditorButtonsComponent
+    EditorButtonsComponent,
   ],
   imports: [
     BrowserModule,
