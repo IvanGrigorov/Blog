@@ -20,5 +20,5 @@ export class AppComponent implements OnInit  {
     this.authService.saveUserData();
   }
   
-  title = 'IProgramming | IStuff';
+  title = 'IProgramming | IStuff - Ivan Grigorov\'s Blog';
 }
