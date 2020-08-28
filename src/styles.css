@@ -35,3 +35,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 p.card-text {
     white-space: pre-wrap;
 }
+
+.smedia {
+    margin-bottom: 5px;
+}

@@ -25,6 +25,8 @@
               <a href="{{this.getProjectDetails()?.website}}" class="btn btn-primary" id="websiteBtn">Visit project</a>
             </div>
           </div>
+          <div class="smedia"><a  target="_blank" href="{{'https://www.linkedin.com/sharing/share-offsite/?url=' + this.currentUrl}}"><img src="assets/images/in/in.jpg" alt="" width="30px" height="30px"></a></div>
+          <div class="smedia"> <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" [attr.data-url]="this.currentUrl" data-show-count="false">Tweet</a></div>
           <div class="fb-like" [attr.data-href]="this.currentUrl" data-width="" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
           <div class="fb-comments" [attr.data-href]="this.currentUrl" data-numposts="5" data-width="100%"></div>
       </div>
