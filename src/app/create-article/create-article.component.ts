@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Helpers } from '../../helpers/helperFunctions';
+import { NotificationService } from 'src/services/notification/notification.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class CreateArticleComponent implements OnInit {
 
   constructor(private articleService: ArticleService,
     private fb: FormBuilder,
-    private toatsr: ToastrService) {
+    private toatsr: ToastrService,
+    private notificationService: NotificationService) {
       this._article = fb.group({
         "title" : ['', [Validators.required]],
         "body" : ['', [Validators.required]],
@@ -148,6 +150,12 @@ export class CreateArticleComponent implements OnInit {
     this.articleService.createArticle(this.convertFormControllToFormData())
       .subscribe(result => {
         this.toatsr.success("Article created successfuly!", "Success");
+        this.notificationService.createNotification(
+          'https://ivanit.eu/assets/images/hobbies/article.jpg',
+          'New article created !',
+          'Hi, a new article is created !',
+          'https://ivanit.eu/hobbies/article/' + result
+        )
       })
   }
 

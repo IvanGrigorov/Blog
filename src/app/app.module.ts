@@ -39,6 +39,8 @@ import { HttploadinginterceptorService } from '../services/htmlLoadingIntercepto
 import { LoadingstateService } from '../services/loadingState/loadingstate.service';
 import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
 import { SEOService } from '../services/seo/seo.service';
+import { NotificationService } from '../services/notification/notification.service';
+
 
 @NgModule({
   declarations: [
@@ -83,6 +85,7 @@ import { SEOService } from '../services/seo/seo.service';
     ArticleService,
     LoadingstateService,
     SEOService,
+    NotificationService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

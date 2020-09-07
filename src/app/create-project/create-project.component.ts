@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/services/project/project.service';
 import { environment } from 'src/environments/environment';
 import { Helpers } from '../../helpers/helperFunctions';
+import { NotificationService } from 'src/services/notification/notification.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class CreateProjectComponent implements OnInit {
   constructor(private technologyService: TechnologyService,
     private projectService: ProjectService,
     private fb: FormBuilder,
-    private toatsr: ToastrService) {
+    private toatsr: ToastrService,
+    private notificationService: NotificationService) {
       this._project = fb.group({
         "title" : ['', [Validators.required]],
         "description" : ['', [Validators.required]],
@@ -153,6 +155,12 @@ export class CreateProjectComponent implements OnInit {
     this.projectService.createProject(this.convertFormControllToFormData())
       .subscribe(result => {
         this.toatsr.success("Project created successfuly!", "Success");
+        this.notificationService.createNotification(
+          'https://ivanit.eu/assets/images/programming/project.jpg',
+          'New project added !',
+          'Hi, a new project is added !',
+          'https://ivanit.eu/programming/project/' + result
+        )
       })
   }
 
