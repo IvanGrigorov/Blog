@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <app-pnavigation (updateResults)="update($event)"></app-pnavigation>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-lg-9">
         <div class="jumbotron jumbotron-fliud">
           <h1 class="display-4">Hi, folks!</h1>
           <p class="lead">Welcome to my articles section!</p>
@@ -27,6 +27,20 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-3">
+        <ul class="list-group">
+          <li class="list-group-item disabled" aria-disabled="true">Популярни тагове</li>
+          <li (click)="this.quickSearch('');" class="list-group-item">Всички</li>
+          <li (click)="this.quickSearch('Наука');" class="list-group-item">Наука</li>
+          <li (click)="this.quickSearch('Физика');" class="list-group-item">Физика</li>
+          <li (click)="this.quickSearch('Космология');" class="list-group-item">Космология</li>
+          <li (click)="this.quickSearch('Личност');" class="list-group-item">Личност</li>
+          <li (click)="this.quickSearch('Развитие');" class="list-group-item">Развитие</li>
+          <li (click)="this.quickSearch('Здраве');" class="list-group-item">Здраве</li>
+          <li (click)="this.quickSearch('Спорт');" class="list-group-item">Спорт</li>
+        </ul>
+      </div>
+
     </div>
   </div>
   <router-outlet></router-outlet>

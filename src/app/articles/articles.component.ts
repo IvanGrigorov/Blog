@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Article } from '../models/Article';
 import { SEOService } from 'src/services/seo/seo.service';
+import { SearchService } from 'src/services/search/search.service';
 
 @Component({
   selector: 'app-articles',
@@ -23,7 +24,8 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
     protected userInfoStore: UserinfostoreService,
     private toastr: ToastrService,
     protected router: Router,
-    private seoService: SEOService) { 
+    private seoService: SEOService,
+    private searchService: SearchService) { 
     super(authService, userInfoStore, router);
     localStorage.setItem('mode', "hobbies");
    }
@@ -57,6 +59,11 @@ export class ArticlesComponent extends BaseComponent implements OnInit {
 
   update(eventData) {
     this.articles = eventData;
+  }
+
+  quickSearch(query) {
+    this.searchService.searchArticle({query: query})
+        .subscribe(articles => this.articles = articles)
   }
 
 
