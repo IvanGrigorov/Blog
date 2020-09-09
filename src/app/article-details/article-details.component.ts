@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/services/article/article.service';
 import { ImagesService } from 'src/services/images/images.service';
 import { environment } from 'src/environments/environment';
-import { Title } from '@angular/platform-browser';
+import { Title, DomSanitizer } from '@angular/platform-browser';
 import { SEOService } from 'src/services/seo/seo.service';
 
 @Component({
@@ -22,7 +22,8 @@ export class ArticleDetailsComponent implements OnInit {
     private imageSerice : ImagesService,
     private router: Router,
     private title: Title,
-    private seoService: SEOService) { 
+    private seoService: SEOService,
+    private _domSanitizer: DomSanitizer) { 
     }
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class ArticleDetailsComponent implements OnInit {
 
   public ngOnDestroy() {
     this.seoService.resetMetaTags();
+  }
+
+  get body() {
+    return this._domSanitizer.bypassSecurityTrustHtml(this.getArticleDetails()?.body);
   }
 
   get currentUrl() {

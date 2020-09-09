@@ -7,6 +7,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { Helpers } from '../../helpers/helperFunctions';
 import { NotificationService } from 'src/services/notification/notification.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class CreateArticleComponent implements OnInit {
   constructor(private articleService: ArticleService,
     private fb: FormBuilder,
     private toatsr: ToastrService,
-    private notificationService: NotificationService) {
+    private notificationService: NotificationService,
+    private domSanitizer: DomSanitizer) {
       this._article = fb.group({
         "title" : ['', [Validators.required]],
         "body" : ['', [Validators.required]],
@@ -73,6 +75,10 @@ export class CreateArticleComponent implements OnInit {
 
   get body() {
     return this._article.get('body');
+  }
+
+  get bodyValue() {
+    return this.domSanitizer.bypassSecurityTrustHtml(this._article.get('body').value);
   }
 
   get imageUploadArray() : Array<any> {
