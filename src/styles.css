@@ -39,3 +39,7 @@ p.card-text {
 .smedia {
     margin-bottom: 5px;
 }
+
+blockquote p {
+    font-size: 0.7rem;
+}
