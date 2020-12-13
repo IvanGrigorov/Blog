@@ -1,27 +1,32 @@
-# Blog
+# Blog Client
+> This is an Angular client based application that is working alongside the Blog API from the other project. [Blog C# API](https://github.com/IvanGrigorov/PersonalBlog "Blog C# API")<br>
+It is a portfolio that displays my current programming projects, my hobbies,
+allows me to share my thoughts through categorized articles and shows who I am.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.4.
+### Core Features:
+There is login option based on JWT token. [JWT Tokens](https://jwt.io/ "JWT Tokens")
+- It has one way user state manegement, based on Observables, wich is responsible for storing the user info, based on the token.
+- It has HTTP client interceptor that adds the token (if exists) for every request for authentication
+- It has special route guard that limits the access to pages if the user is not authenticated
 
-## Development server
+It allows to make requests for CRUD for Projects and Articles.
+- You can also upload images for Projects and Articles.
+- Built in two-way form bindings and validators are used. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It has a Loading service and iterceptor.
+- This checks if there are still unfinished requests and displays a loading screen if so.
 
-## Code scaffolding
+It has Errorhandling service and interceptor.
+- It has an interceptor that retries the request on failure.
+- Based on the error (401, 404, 500) the additional error handler either redirects the user to login, to the error page or just display the error message.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Additional integrations:
+- For the HTML pages Bootstrap is used [Bootstrap](https://getbootstrap.com/ "Bootstrap")
+- Toastr messages in app [Toastr](https://blog.jscrambler.com/how-to-create-angular-toastr-notifications/ "Toastr")
+- Notification service for local notifications [Notifications](https://developer.mozilla.org/en-US/docs/Web/API/notification "Notifications")
+- Facebook comments and like plugin [FB Comments](https://developers.facebook.com/docs/plugins/comments/ "FB Comments")
 
-## Build
+Future development:
+- Resseting password through email
+- Adding logos for badges
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
